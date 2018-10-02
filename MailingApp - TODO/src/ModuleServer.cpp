@@ -61,6 +61,7 @@ void ModuleServer::onPacketReceived(SOCKET socket, const InputMemoryStream & str
 	PacketType packetType;
 
 	// TODO: Deserialize the packet type
+	stream.Read(packetType);
 
 	LOG("onPacketReceived() - packetType: %d", (int)packetType);
 
@@ -85,6 +86,7 @@ void ModuleServer::onPacketReceivedLogin(SOCKET socket, const InputMemoryStream 
 {
 	std::string loginName;
 	// TODO: Deserialize the login username into loginName
+	stream.Read(loginName);
 
 	// Register the client with this socket with the deserialized username
 	ClientStateInfo & client = getClientStateInfoForSocket(socket);
@@ -106,17 +108,29 @@ void ModuleServer::sendPacketQueryAllMessagesResponse(SOCKET socket, const std::
 	OutputMemoryStream outStream;
 	// TODO: Create QueryAllMessagesResponse and serialize all the messages
 	// -- serialize the packet type
+	outStream.Write(PacketType::QueryAllMessagesResponse);
 	// -- serialize the array size
+	outStream.Write(messages.size());
 	// -- serialize the messages in the array
+	for (auto m : messages) {
+		outStream.Write(m.senderUsername);
+		outStream.Write(m.receiverUsername);
+		outStream.Write(m.subject);
+		outStream.Write(m.body);
+	}
 
 	// TODO: Send the packet (pass the outStream to the sendPacket function)
+	sendPacket(socket, outStream);
 }
 
 void ModuleServer::onPacketReceivedSendMessage(SOCKET socket, const InputMemoryStream & stream)
 {
 	Message message;
 	// TODO: Deserialize the packet (all fields in Message)
-
+	stream.Read(message.senderUsername);
+	stream.Read(message.receiverUsername);
+	stream.Read(message.subject);
+	stream.Read(message.body);
 	// Insert the message in the database
 	database()->insertMessage(message);
 }
