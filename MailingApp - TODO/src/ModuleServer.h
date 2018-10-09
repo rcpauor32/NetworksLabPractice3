@@ -94,7 +94,7 @@ private:
 	ServerState state = ServerState::Off;
 
 	// Application port
-	int port = 8000;
+	int port = 3306;
 
 	// Special socket to accept incoming client connections.
 	SOCKET listenSocket;

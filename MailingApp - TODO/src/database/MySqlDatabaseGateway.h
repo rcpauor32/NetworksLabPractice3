@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IDatabaseGateway.h"
+#include "DBConnection.h"
 
 class MySqlDatabaseGateway :
 	public IDatabaseGateway
@@ -25,11 +26,11 @@ public:
 private:
 
 	// Text buffers for ImGUI
-	char bufMySqlHost[64] = "citmalumnes.upc.es";
-	char bufMySqlPort[64] = "3306";
-	char bufMySqlDatabase[64] = "database";
+	char bufMySqlHost[64] = DB_SERVER;
+	char bufMySqlPort[64] = DB_PORT;
+	char bufMySqlDatabase[64] = DB_NAME;
 	char bufMySqlTable[64] = "messages";
-	char bufMySqlUsername[64] = "username";
-	char bufMySqlPassword[64] = "password";
+	char bufMySqlUsername[64] = DB_USERNAME;
+	char bufMySqlPassword[64] = DB_USERPASS;
 };
 

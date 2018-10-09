@@ -6,11 +6,11 @@
 #include <sql.h>
 #include <vector>
 
-#define DB_SERVER   "localhost"
+#define DB_SERVER   "TTC-206-22"
 #define DB_PORT     "3306"
-#define DB_NAME     "dbname"
-#define DB_USERNAME "username"
-#define DB_USERPASS "password"
+#define DB_NAME     "networks"
+#define DB_USERNAME "pauor"
+#define DB_USERPASS "47674995Ckr"
 
 
 typedef std::string DBResultColumn;

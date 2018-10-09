@@ -85,7 +85,7 @@ void ModuleClient::onPacketReceivedQueryAllMessagesResponse(const InputMemoryStr
 {
 	messages.clear();
 
-	uint32_t messageCount;
+	size_t messageCount;
 	// TODO: Deserialize the number of messages
 	stream.Read(messageCount);
 	// TODO: Deserialize messages one by one and push_back them into the messages vector
@@ -175,7 +175,7 @@ void ModuleClient::updateGUI()
 			ImGui::InputText("IP", ipBuffer, sizeof(ipBuffer));
 
 			// Port
-			static int port = 8000;
+			static int port = 3306;
 			ImGui::InputInt("Port", &port);
 
 			// Connect button

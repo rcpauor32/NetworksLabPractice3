@@ -42,7 +42,8 @@ void MySqlDatabaseGateway::insertMessage(const Message & message)
 
 		std::string sqlStatement;
 		// TODO: Create the SQL statement to insert the passed message into the DB (INSERT)
-
+		sqlStatement = "INSERT INTO messages VALUES ('2, '2', '2', '2')";
+		printf(sqlStatement.c_str());
 		// insert some messages
 		db.sql(sqlStatement.c_str());
 	}
