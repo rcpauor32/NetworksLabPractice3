@@ -96,6 +96,7 @@ void ModuleClient::onPacketReceivedQueryAllMessagesResponse(const InputMemoryStr
 		stream.Read(tmp.senderUsername);
 		stream.Read(tmp.subject);
 		stream.Read(tmp.body);
+		stream.Read(tmp.id);
 		messages.push_back(tmp);
 	}
 

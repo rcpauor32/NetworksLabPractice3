@@ -121,6 +121,7 @@ void ModuleServer::sendPacketQueryAllMessagesResponse(SOCKET socket, const std::
 		outStream.Write(m.receiverUsername);
 		outStream.Write(m.subject);
 		outStream.Write(m.body);
+		outStream.Write(m.id);
 	}
 
 	// TODO: Send the packet (pass the outStream to the sendPacket function)
