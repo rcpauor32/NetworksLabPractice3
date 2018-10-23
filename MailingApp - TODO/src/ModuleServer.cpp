@@ -77,6 +77,9 @@ void ModuleServer::onPacketReceived(SOCKET socket, const InputMemoryStream & str
 	case PacketType::SendMessageRequest:
 		onPacketReceivedSendMessage(socket, stream);
 		break;
+	case PacketType::DeleteMessageRequest:
+		onPacketReceivedDeleteMessage(socket, stream);
+		break;
 	default:
 		LOG("Unknown packet type received");
 		break;
@@ -136,6 +139,18 @@ void ModuleServer::onPacketReceivedSendMessage(SOCKET socket, const InputMemoryS
 	message.id = RandomNumber();
 	
 	database()->insertMessage(message);
+}
+
+void ModuleServer::onPacketReceivedDeleteMessage(SOCKET socket, const InputMemoryStream & stream)
+{
+
+	std::string senderUsername;
+	const float uid;
+
+	stream.Read(senderUsername);
+	stream.Read(uid);
+
+	database()->deleteMessage(senderUsername, uid);
 }
 
 void ModuleServer::sendPacket(SOCKET socket, OutputMemoryStream & stream)

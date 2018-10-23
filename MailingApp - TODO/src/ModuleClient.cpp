@@ -159,6 +159,18 @@ void ModuleClient::sendPacket(const OutputMemoryStream & stream)
 	memcpy(&sendBuffer[oldSize] + HEADER_SIZE, stream.GetBufferPtr(), stream.GetSize());
 }
 
+void ModuleClient::sendDeleteMessage(const float uid)
+{
+	OutputMemoryStream stream;
+	stream.Write(PacketType::DeleteMessageRequest);
+	stream.Write(senderBuf);
+	stream.Write(uid);
+	
+	sendPacket(stream);
+
+	messengerState = MessengerState::RequestingMessages;
+}
+
 
 // GUI: Modify this to add extra features...
 

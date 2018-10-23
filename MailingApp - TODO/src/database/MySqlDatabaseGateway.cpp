@@ -49,6 +49,23 @@ void MySqlDatabaseGateway::insertMessage(const Message & message)
 	}
 }
 
+void MySqlDatabaseGateway::deleteMessage(const std::string & username, const float uid)
+{
+	DBConnection db(bufMySqlHost, bufMySqlPort, bufMySqlDatabase, bufMySqlUsername, bufMySqlPassword);
+
+	if (db.isConnected())
+	{
+		DBResultSet res;
+
+		std::string sqlStatement;
+		// [WIP] TODO: Create the SQL statement to delete the 'ided' message from the DB (DELETE)
+		//sqlStatement = "INSERT INTO messages VALUES (message.sender, message.receiver, message.subject, message.body)";
+
+		// delete message
+		db.sql(sqlStatement.c_str());
+	}
+}
+
 std::vector<Message> MySqlDatabaseGateway::getAllMessagesReceivedByUser(const std::string & username)
 {
 	std::vector<Message> messages;

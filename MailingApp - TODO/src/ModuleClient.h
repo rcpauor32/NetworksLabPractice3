@@ -33,6 +33,7 @@ private:
 
 	void sendPacket(const OutputMemoryStream &stream);
 
+	void sendDeleteMessage(const float id);
 	
 	// GUI
 
