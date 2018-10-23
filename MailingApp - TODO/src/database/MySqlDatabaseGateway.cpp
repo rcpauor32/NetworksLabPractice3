@@ -49,7 +49,7 @@ void MySqlDatabaseGateway::insertMessage(const Message & message)
 	}
 }
 
-void MySqlDatabaseGateway::deleteMessage(const std::string & username, const float uid)
+void MySqlDatabaseGateway::deleteMessage(float uid)
 {
 	DBConnection db(bufMySqlHost, bufMySqlPort, bufMySqlDatabase, bufMySqlUsername, bufMySqlPassword);
 

@@ -18,7 +18,7 @@ public:
 
 	virtual void insertMessage(const Message &message) = 0;
 
-	virtual void deleteMessage(const std::string &username, const float uid) = 0;
+	virtual void deleteMessage(float uid) = 0;
 
 	virtual std::vector<Message> getAllMessagesReceivedByUser(const std::string &username) = 0;
 

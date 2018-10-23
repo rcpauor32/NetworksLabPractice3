@@ -19,7 +19,7 @@ public:
 
 	void insertMessage(const Message &message) override;
 
-	void deleteMessage(const std::string &username, const float uid) override;
+	void deleteMessage(float uid) override;
 
 	std::vector<Message> getAllMessagesReceivedByUser(const std::string &username) override;
 

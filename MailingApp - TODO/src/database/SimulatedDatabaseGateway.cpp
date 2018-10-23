@@ -16,7 +16,7 @@ void SimulatedDatabaseGateway::insertMessage(const Message & message)
 	allMessages.push_back(message);
 }
 
-void SimulatedDatabaseGateway::deleteMessage(const std::string & username, const float uid)
+void SimulatedDatabaseGateway::deleteMessage(float uid)
 {
 	for (int i = 0; i < allMessages.size(); ++i) {
 		if (allMessages[i].id == uid) {

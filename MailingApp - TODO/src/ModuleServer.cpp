@@ -143,14 +143,11 @@ void ModuleServer::onPacketReceivedSendMessage(SOCKET socket, const InputMemoryS
 
 void ModuleServer::onPacketReceivedDeleteMessage(SOCKET socket, const InputMemoryStream & stream)
 {
-
-	std::string senderUsername;
 	float uid;
 
-	stream.Read(senderUsername);
 	stream.Read(uid);
 
-	database()->deleteMessage(senderUsername, uid);
+	database()->deleteMessage(uid);
 }
 
 void ModuleServer::sendPacket(SOCKET socket, OutputMemoryStream & stream)
@@ -431,7 +428,7 @@ ModuleServer::ClientStateInfo & ModuleServer::getClientStateInfoForSocket(SOCKET
 		}
 	}
 
-	assert(nullptr && "The client for this socket does not exist.");
+	//assert(nullptr && "The client for this socket does not exist.");
 }
 
 bool ModuleServer::existsClientStateInfoForSocket(SOCKET s)
