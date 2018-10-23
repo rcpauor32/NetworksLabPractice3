@@ -242,6 +242,10 @@ void ModuleClient::updateGUI()
 					ImGui::TextWrapped("%s", message.body.c_str());
 					ImGui::TreePop();
 				}
+				ImGui::SameLine();
+				if (ImGui::Button("Delete Message")) {
+					
+				}
 				ImGui::PopID();
 			}
 		}
