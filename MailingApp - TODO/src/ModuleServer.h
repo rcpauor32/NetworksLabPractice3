@@ -40,6 +40,9 @@ private:
 
 	void sendPacket(SOCKET socket, OutputMemoryStream& stream);
 
+	//Helper
+
+	float RandomNumber(float min = INT_MIN, float max = INT_MAX);
 
 	// GUI
 

@@ -140,6 +140,7 @@ void ModuleClient::sendPacketSendMessage(const char * receiver, const char * sub
 	stream.Write(std::string(receiver));
 	stream.Write(std::string(subject));
 	stream.Write(std::string(message));
+
 	// TODO: Use sendPacket() to send the packet
 	sendPacket(stream);
 

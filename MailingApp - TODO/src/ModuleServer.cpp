@@ -4,6 +4,7 @@
 #include "serialization/PacketTypes.h"
 #include "database/MySqlDatabaseGateway.h"
 #include "database/SimulatedDatabaseGateway.h"
+#include <random>
 
 
 static bool g_SimulateDatabaseConnection = true;
@@ -132,6 +133,8 @@ void ModuleServer::onPacketReceivedSendMessage(SOCKET socket, const InputMemoryS
 	stream.Read(message.subject);
 	stream.Read(message.body);
 	// Insert the message in the database
+	message.id = RandomNumber();
+	
 	database()->insertMessage(message);
 }
 
@@ -145,6 +148,14 @@ void ModuleServer::sendPacket(SOCKET socket, OutputMemoryStream & stream)
 	packetSize = HEADER_SIZE + stream.GetSize(); // header size + payload size
 	//std::copy(stream.GetBufferPtr(), stream.GetBufferPtr() + stream.GetSize(), &client.sendBuffer[oldSize] + HEADER_SIZE);
 	memcpy(&client.sendBuffer[oldSize] + HEADER_SIZE, stream.GetBufferPtr(), stream.GetSize());
+}
+
+float ModuleServer::RandomNumber(float min, float max)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(min, max);
+	return dis(gen);
 }
 
 
