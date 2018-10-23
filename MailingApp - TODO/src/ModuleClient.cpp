@@ -257,7 +257,7 @@ void ModuleClient::updateGUI()
 				}
 				ImGui::SameLine();
 				if (ImGui::Button("Delete Message")) {
-					
+					sendDeleteMessage(message.id);
 				}
 				ImGui::PopID();
 			}

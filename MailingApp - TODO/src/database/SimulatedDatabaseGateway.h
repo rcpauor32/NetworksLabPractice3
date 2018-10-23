@@ -24,7 +24,6 @@ public:
 	std::vector<Message> getAllMessagesReceivedByUser(const std::string &username) override;
 
 
-
 private:
 
 	std::vector<Message> allMessages;

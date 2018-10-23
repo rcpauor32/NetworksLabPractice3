@@ -145,7 +145,7 @@ void ModuleServer::onPacketReceivedDeleteMessage(SOCKET socket, const InputMemor
 {
 
 	std::string senderUsername;
-	const float uid;
+	float uid;
 
 	stream.Read(senderUsername);
 	stream.Read(uid);
